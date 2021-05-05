@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    let box;
+    let array = [];
+    let arrayM = [];
+    
+    let countDraw = 0;
+    for (let index = 0; index < 36; index++) {
+        
+        box = document.createElement("div");
+        box.style.width = "50px";
+        box.style.height = "50px";
+        
+         if(index == 32 ){
+        box.style.backgroundColor = "blue";
+        }
+        
+        else {
+        box.style.backgroundColor = "black";
+        }
+        box.style.margin = "10px";
+        
+        box.style.display = "inline-block";
+        document.body.appendChild(box);
+        array[index] = box;
+        console.log(array[index])
+        countDraw++;
+        if (countDraw % 6 == 0) {
+            document.write("<br>");
+        }
+    }
+    let random1= Math.floor(Math.random()*31)
+    console.log(random1)
+     let objw = array[random1]
+     objw.style.background="yellow"
+     for(let i = 0 ; i<6 ;){
+        let random = Math.floor(Math.random() * 36);
+           if(random != random1 && random != random1-1 && random != random1 +1 && random != 32 && random != 26 ){
+           arrayM[i]=array[random]
+           arrayM[i].style.background="red"
+           i++;
+            }
+        
+     }
+     let x = 32
+     let y =32
+     let objo=array[y]
+     let obj = array[x];
+     document.addEventListener("keydown", keyDown);
+        function keyDown(e){
+    if(e.key === "ArrowUp" || e.key === "Up"){
+        x-=6
+        obj = array[x]
+        if (obj.style.background !="red" && obj.style.background !="yellow") {
+            objo=array[y]
+            y-=6
+        objo.style.background="black";
+        obj.style.background="blue";
+        }
+         else if (obj.style.background=="red") {
+            let lost =  setInterval(function(){  alert("you lost , you ran into an obstacle")
+                 clearInterval(lost) } , 1000);
+        }
+        else if (obj==objw) {
+            let win =  setInterval(function(){  alert("congratulation you won")
+                 clearInterval(win) } , 1000);
+                 objo=array[y]
+            objo.style.background="orange";
+            obj.style.background="orange";
+         } 
+    }
+    else if(e.key === "ArrowDown" || e.key === "Down"){
+        x+=6
+        obj = array[x]
+        if (obj.style.background !="red" & obj.style.background !="yellow") {
+            objo=array[y]
+            y+=6
+        objo.style.background="black";
+        obj.style.background="blue";
+        }
+         else if (obj.style.background=="red") {
+            let lost =  setInterval(function(){  alert("you lost , you ran into an obstacle")
+                 clearInterval(lost) } , 1000);
+        }
+         else if (obj==objw) {
+            let win =  setInterval(function(){  alert("congratulation you won")
+                 clearInterval(win) } , 1000);
+                 objo=array[y]
+            objo.style.background="orange";
+            obj.style.background="orange";
+         }  
+     }
+    else if(e.key === "ArrowRight" || e.key === "Right"){
+        x+=1
+        obj = array[x]
+        if (obj.style.background !="red" & obj.style.background !="yellow") {
+            objo=array[y]
+            y+=1
+        objo.style.background="black";
+        obj.style.background="blue";
+        }
+         else if (obj.style.background=="red") {
+            let lost =  setInterval(function(){  alert("you lost , you ran into an obstacle")
+                 clearInterval(lost) } , 1000);
+        }
+        else if (obj==objw) {
+            let win =  setInterval(function(){  alert("congratulation you won")
+                 clearInterval(win) } , 1000);
+                 objo=array[y]
+            objo.style.background="orange";
+            obj.style.background="orange";
+         } 
+    }
+    else if(e.key === "ArrowLeft" || e.key === "Left"){
+        x-=1
+        obj = array[x]
+        if (obj.style.background !="red" & obj.style.background !="yellow") {
+            objo=array[y]
+            y-=1
+        objo.style.background="black";
+        obj.style.background="blue";
+        }
+         else if (obj.style.background=="red") {
+            let lost =  setInterval(function(){  alert("you lost , you ran into an obstacle")
+                 clearInterval(lost) } , 1000);
+        }
+        else if (obj==objw) {
+            let win =  setInterval(function(){  alert("congratulation you won")
+                 clearInterval(win) } , 1000);
+                 objo=array[y]
+            objo.style.background="orange";
+            obj.style.background="orange";
+         }    }
+                           }
+    </script>
+</body>
+</html>
